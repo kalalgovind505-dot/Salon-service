@@ -6,10 +6,9 @@ spring:
     name: category-service
 
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/category_yt
+    url: jdbc:mysql://root:XWXuOlJDITwjwXbzteVItSJNpyESKNdU@switchback.proxy.rlwy.net:39815/railway
     username: root
-    password: Govind@123
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: XWXuOlJDITwjwXbzteVItSJNpyESKNdU
 
   jpa:
     hibernate:
@@ -22,13 +21,10 @@ spring:
 
 eureka:
   instance:
-    hostname: localhost
     prefer-ip-address: true
-    instance-id: ${spring.application.name}:${server.port}
-    non-secure-port: ${server.port}
 
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8070/eureka/
+      defaultZone: https://spring-cloud-netflix-eureka-production-cb25.up.railway.app/eureka/

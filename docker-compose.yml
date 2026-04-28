@@ -2,17 +2,6 @@ version: "3.8"
 
 services:
 
-  mysqldb:
-    image: mysql:8
-    container_name: mysqldb
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-    ports:
-      - "3307:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
   eurekaserver:
     image: govindkalal/salon-eurekaserver-yt:v1
@@ -28,23 +17,22 @@ services:
       - "5000:5000"
     environment:
       SPRING_APPLICATION_NAME: gateway-service
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8070/eureka/
-      SPRING_CLOUD_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8070/eureka/
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: https://spring-cloud-netflix-eureka-production-cb25.up.railway.app/eureka/
+      SPRING_CLOUD_CLIENT_SERVICEURL_DEFAULTZONE: https://spring-cloud-netflix-eureka-production-cb25.up.railway.app/eureka/
       EUREKA_INSTANCE_PREFER_IP_ADDRESS: "true"
     depends_on:
       - eurekaserver
     restart: always
 
   user:
-    image: govindkalal/salon-user-yt:v1
+    image: govindkalal/salon-user-yt:v2
     container_name: user
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/user_yt
+      SPRING_DATASOURCE_URL: jdbc:mysql://switchback.proxy.rlwy.net:39815/railway
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8070/eureka/
+      SPRING_DATASOURCE_PASSWORD: XWXuOlJDITwjwXbzteVItSJNpyESKNdU
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: https://spring-cloud-netflix-eureka-production-cb25.up.railway.app/eureka/
     depends_on:
-      - mysqldb
       - eurekaserver
     restart: always
 
@@ -52,12 +40,11 @@ services:
     image: govindkalal/salon-booking-yt:v1
     container_name: booking
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/booking_yt
+      SPRING_DATASOURCE_URL: jdbc:mysql://switchback.proxy.rlwy.net:39815/railway
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8070/eureka/
+      SPRING_DATASOURCE_PASSWORD: XWXuOlJDITwjwXbzteVItSJNpyESKNdU
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: https://spring-cloud-netflix-eureka-production-cb25.up.railway.app/eureka/
     depends_on:
-      - mysqldb
       - eurekaserver
     restart: always
 
@@ -65,12 +52,11 @@ services:
     image: govindkalal/salon-category-yt:v1
     container_name: category
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/category_yt
+      SPRING_DATASOURCE_URL: jdbc:mysql://switchback.proxy.rlwy.net:39815/railway
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8070/eureka/
+      SPRING_DATASOURCE_PASSWORD: XWXuOlJDITwjwXbzteVItSJNpyESKNdU
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: https://spring-cloud-netflix-eureka-production-cb25.up.railway.app/eureka/
     depends_on:
-      - mysqldb
       - eurekaserver
     restart: always
 
@@ -78,12 +64,11 @@ services:
     image: govindkalal/salon-payment-yt:v1
     container_name: payment
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/payment_yt
+      SPRING_DATASOURCE_URL: jdbc:mysql://switchback.proxy.rlwy.net:39815/railway
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8070/eureka/
+      SPRING_DATASOURCE_PASSWORD: XWXuOlJDITwjwXbzteVItSJNpyESKNdU
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: https://spring-cloud-netflix-eureka-production-cb25.up.railway.app/eureka/
     depends_on:
-      - mysqldb
       - eurekaserver
     restart: always
 
@@ -91,12 +76,11 @@ services:
     image: govindkalal/salon-yt:v1
     container_name: salon
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/salon_yt
+      SPRING_DATASOURCE_URL: jdbc:mysql://switchback.proxy.rlwy.net:39815/railway
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8070/eureka/
+      SPRING_DATASOURCE_PASSWORD: XWXuOlJDITwjwXbzteVItSJNpyESKNdU
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: https://spring-cloud-netflix-eureka-production-cb25.up.railway.app/eureka/
     depends_on:
-      - mysqldb
       - eurekaserver
     restart: always
 
@@ -104,14 +88,12 @@ services:
     image: govindkalal/salon-service-offering-yt:v1
     container_name: service-offering
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/service_yt
+      SPRING_DATASOURCE_URL: jdbc:mysql://switchback.proxy.rlwy.net:39815/railway
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8070/eureka/
+      SPRING_DATASOURCE_PASSWORD: XWXuOlJDITwjwXbzteVItSJNpyESKNdU
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: https://spring-cloud-netflix-eureka-production-cb25.up.railway.app/eureka/
     depends_on:
-      - mysqldb
       - eurekaserver
     restart: always
 
-volumes:
-  mysql_data:
+# mysql_data volume is no longer needed since data is on Railway

@@ -7,8 +7,10 @@ spring:
 
 eureka:
   instance:
-    hostname: localhost
+    prefer-ip-address: true
 
   client:
-    register-with-eureka: false
-    fetch-registry: false
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: https://spring-cloud-netflix-eureka-production-cb25.up.railway.app/eureka/

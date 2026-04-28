@@ -7,9 +7,9 @@ spring:
     name: user-service
 
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/user_yt?createDatabaseIfNotExist=true
+    url: jdbc:mysql://root:XWXuOlJDITwjwXbzteVItSJNpyESKNdU@switchback.proxy.rlwy.net:39815/railway
     username: root
-    password: Govind@123
+    password: XWXuOlJDITwjwXbzteVItSJNpyESKNdU
 
   jpa:
     hibernate:
@@ -27,4 +27,4 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8070/eureka/
+      defaultZone: https://spring-cloud-netflix-eureka-production-cb25.up.railway.app/eureka/
