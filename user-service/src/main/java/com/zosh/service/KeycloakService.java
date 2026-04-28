@@ -17,20 +17,20 @@ import java.util.List;
 public class
 KeycloakService {
 
-    private static final String KEYCLOAK_BASE_URL="http://localhost:8080";
-    private static final String KEYCLOAK_ADMIN_API=KEYCLOAK_BASE_URL+"/admin/realms/master/users";
+    private static final String KEYCLOAK_BASE_URL="https://lemur-18.cloud-iam.com/auth";
+    private static final String KEYCLOAK_ADMIN_API=KEYCLOAK_BASE_URL+"/admin/realms/salon-auth-test/users";
 
 
-    private  static final String TOKEN_URL=KEYCLOAK_BASE_URL+"/realms/master/protocol/openid-connect/token";
+    private  static final String TOKEN_URL=KEYCLOAK_BASE_URL+"/realms/salon-auth-test/protocol/openid-connect/token";
 
-    private static final String CLIENT_ID="salon-booking-client";
-    private static final String CLIENT_SECRET="DJSDpiYdDQIY5yNSE04glPTNkXwxAYk0";
+    private static final String CLIENT_ID="salon-app";
+    private static final String CLIENT_SECRET="YTjSTuR42Y6uQVX1T3HgM5AERfd2azAd";
 
     private  static final String GRANT_TYPE="password";
     private  static final String scope="openid profile email";
-    private  static  final  String username="zosh";
-    private  static  final  String password="admin";
-    private  static final  String clientId="6eef9c4a-391d-49c8-9dcb-f29cec38757d";
+    private  static  final  String username="admin";
+    private  static  final  String password="[.yYCauTRboG0YVrBoVb";
+    private  static final  String clientId="f99eec80-bf21-4405-8e4f-2b2fba5dde89";
 
 
     private  final RestTemplate restTemplate;
