@@ -68,9 +68,9 @@ spring:
 
   security:
     oauth2:
-      resource server:
+      resourceserver:
         jwt:
-          jwk-set-uri: "https://your-keycloak.app/realms/master/protocol/openid-connect/certs"
+          jwk-set-uri: https://lemur-18.cloud-iam.com/auth/realms/salon-auth-test
 
 
 
